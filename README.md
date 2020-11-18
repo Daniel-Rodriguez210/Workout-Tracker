@@ -16,6 +16,5 @@ This application was built using HTML, CSS, MongoDB and JavaScript.
 
 It was deployed using Heroku. 
 
-<img src="SS1.png">
-<img src="SS2.png">
+
 <img src="SS3.png">
