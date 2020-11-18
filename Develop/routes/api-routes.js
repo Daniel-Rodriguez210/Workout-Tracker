@@ -1,18 +1,19 @@
-const db = require("../public");
+const workout = require("../models/workout");
 
 module.exports = function (app) {
-    app.get("/api/Workouts", function (req, res) {
-        db.Workout.find({})
+    app.get("/api/workouts", function(req, res) {
+        workout.find()
         .then(data => {
                 res.json(data);
-            });
-    })
-        .catch(err => {
+        })
+        .catch(err => { 
             res.json(err)
-    });
+        })
+        });
 
-    app.post("/api/workouts",function (req,res){    
-        db.Workout.create({})
+
+    app.post("/api/workouts",function(req,res){    
+        workout.create({})
         .then(data => res.json(data))
         .catch(err => { 
             res.json(err)
@@ -20,7 +21,7 @@ module.exports = function (app) {
     });
 
     app.get("/api/workouts/range",function(req,res){  
-        db.Workout.find()
+        workout.find()
         .then(data =>{  
             res.json(data)
         })
@@ -31,7 +32,7 @@ module.exports = function (app) {
 
 
     app.post("/api/workouts/range",function (req,res){    
-        db.Workout.create({})
+        workout.create({})
         .then(data => res.json(data))
         .catch(err => { 
             res.json(err)
@@ -39,7 +40,7 @@ module.exports = function (app) {
     });
 
     app.put("/api/workouts/:id",({body,params},res)=>{   
-        db.Workout.findByIdAndUpdate(  
+        workout.findByIdAndUpdate(  
          params.id,
          {$push:{exercises:body} },
          {new: true,runValidators:true }
