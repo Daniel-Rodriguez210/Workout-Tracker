@@ -40,3 +40,6 @@ const UserSchema = new Schema({
     },
 
 })
+
+const User = mongoose.model("workout", UserSchema);
+module.exports = User;
