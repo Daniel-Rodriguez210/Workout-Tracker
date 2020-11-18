@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const { Seeder } = require('mongo-seeding');
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbWorkout", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout", { useNewUrlParser: true });
 
 const app = express();
 
@@ -13,14 +13,8 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.static('seeders'));
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
-
-
-
-
-
+require("./Develop/routes/api-routes")(app);
+require("./Develop/routes/html-routes")(app);
 
 
 app.listen(3000, () => {
